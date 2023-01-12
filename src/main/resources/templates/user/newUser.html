@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New user</title>
+  <style>
+    input {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+  <label for="name" >Enter name: </label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+  <br/>
+  <label for="surname" >Enter surname: </label>
+  <input type="text" th:field="*{surname}" id="surname"/>
+  <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
+  <br/>
+  <label for="password" >Enter password: </label>
+  <input type="password" th:field="*{password}" id="password"/>
+  <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+  <br/>
+  <br/>
+  <br/>
+  <input type="checkbox" th:field="*{roles}" th:value="ROLE_ADMIN" />Admin<br/>
+  <input type="checkbox" th:field="*{roles}" th:value="ROLE_USER" />User<br/>
+  <br/>
+  <input type="submit" value="Add user"/>
+</form>
+<br/>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="LOGOUT"/>
+</form>
+</body>
+</html>

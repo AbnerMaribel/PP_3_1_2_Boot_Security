@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+  <style>
+    input {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<p th:text="${user.surname}">VALUE</p>
+<p th:text="${user.name}">VALUE</p>
+<p th:text="${user.id}">VALUE</p>
+
+<tr th:each="role : ${user.roles}">
+  <p th:text="${role.name}">VALUE</p>
+</tr>
+<br/>
+<hr/>
+
+<a th:href="@{/admin/{id}/edit(id=${user.id})}">Edit</a>
+<br/>
+<a href="/admin">All users</a>
+<br/>
+<form th:method="DELETE" th:action="@{/admin/{id}(id=${user.id})}">
+  <input type="submit" value="Delete">
+</form>
+<br/>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="LOGOUT"/>
+</form>
+</body>
+</html>

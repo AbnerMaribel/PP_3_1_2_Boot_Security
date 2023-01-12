@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All users</title>
+  <style>
+    input {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div th:each="user : ${users}">
+  <a th:href="@{/admin/{id}(id=${user.id})}">
+    <b th:text="${user.name}">name</b>
+    <b th:text="${user.surname}">surname</b>
+  </a>
+</div>
+<br/>
+<hr/>
+<a href="/admin/newUser">Add user</a>
+<br/>
+<a href="/user">My page</a>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="LOGOUT"/>
+</form>
+</body>
+</html>

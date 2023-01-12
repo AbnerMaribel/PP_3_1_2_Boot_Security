@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+  <style>
+    input {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<p th:text="${user.surname}">VALUE</p>
+<p th:text="${user.name}">VALUE</p>
+<p th:text="${user.id}">VALUE</p>
+<br/>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="LOGOUT"/>
+</form>
+</body>
+</html>
